@@ -1,9 +1,10 @@
 <div>
     <h1>My Todolist</h1>
 
-    <!-- (addTask) : on écoute l'output du composant enfant.
+
+    <!--(addTask) : on écoute l'output du composant enfant.
          $event contient la valeur émise, ici le nom de la nouvelle tâche. -->
-    <app-task-add (addTask)="addTask($event)"/>
+    <app-task-add (addTask)="addTask($event)" [toto]="'toto'"/>
 
     <!-- [tasks] : on passe la liste à l'input de l'enfant.
          On transmet tasks() (la valeur du signal), pas le signal lui-même. -->

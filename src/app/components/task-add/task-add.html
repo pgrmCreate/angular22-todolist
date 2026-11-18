@@ -1,9 +1,21 @@
 <div>
-    <!-- #newTaskName est une variable de référence de template : elle pointe vers l'<input>.
-         À l'envoi, on passe sa valeur au composant, puis on vide le champ. -->
-    <form (ngSubmit)="handleAddTask(newTaskName.value); newTaskName.value=''">
-        <input type="text" placeholder="nom de la tâche" #newTaskName>
+    <form (submit)="$event.preventDefault(); handleAddTask();">
+        <input type="text" [formField]="newTaskForm.title"/>
 
         <button>ajouter</button>
     </form>
+
+    <div>
+        @for(error of newTaskForm.title().errors(); track error.kind) {
+            <p>{{ error.message }}</p>
+        }
+
+        @if(newTaskForm.title().invalid()) {
+            <p>Problème sur title</p>
+        }
+    </div>
+
+    @for(t of toto; track $index) {
+        <p>{{ t }}</p>
+    }
 </div>
