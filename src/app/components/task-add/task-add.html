@@ -1,0 +1,7 @@
+<div>
+    <form (ngSubmit)="handleAddTask(newTaskName.value); newTaskName.value=''">
+        <input type="text" placeholder="nom de la tâche" #newTaskName>
+
+        <button>ajouter</button>
+    </form>
+</div>
