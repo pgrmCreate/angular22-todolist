@@ -1,5 +1,7 @@
 <div>
     <ul>
+        <!-- track task.id : Angular reconnaît chaque tâche par son id
+             et ne recrée que les lignes qui ont changé. -->
         @for(task of tasks(); track task.id) {
             <li>{{ task.title }}</li>
         }

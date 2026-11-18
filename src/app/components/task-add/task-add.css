@@ -1,0 +1,55 @@
+/* Les styles d'un composant sont encapsulés : "form", "input" et "button"
+   ne visent ici que les éléments de task-add.html, pas ceux du reste de l'application. */
+
+form {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+    font: inherit;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input::placeholder {
+    color: #a3a7b1;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+button {
+    padding: 0.7rem 1.15rem;
+    border: 0;
+    border-radius: 12px;
+    background: var(--accent);
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.1s;
+}
+
+/* Le texte du bouton est "ajouter" : on met seulement la première lettre en majuscule. */
+button::first-letter {
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: var(--accent-strong);
+}
+
+button:active {
+    transform: translateY(1px);
+}

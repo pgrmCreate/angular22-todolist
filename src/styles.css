@@ -1,0 +1,39 @@
+/* Styles globaux : ils s'appliquent à toute l'application.
+   Les variables (--accent, --line…) sont réutilisées dans les CSS des composants. */
+
+:root {
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --surface-sunken: #f0ece4;
+    --ink: #1d2433;
+    --muted: #6b7180;
+    --line: #e6e0d6;
+    --accent: #0f766e;
+    --accent-strong: #0b5c56;
+    --accent-soft: #dff3ef;
+    --radius: 16px;
+    --shadow: 0 1px 2px rgb(29 36 51 / 6%), 0 12px 32px -12px rgb(29 36 51 / 18%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    line-height: 1.5;
+    color: var(--ink);
+    background:
+        radial-gradient(1000px 420px at 85% -10%, #e3f1ec 0%, transparent 60%),
+        var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    outline-offset: 2px;
+}

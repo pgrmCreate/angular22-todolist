@@ -1,4 +1,6 @@
 <div>
+    <!-- #newTaskName est une variable de référence de template : elle pointe vers l'<input>.
+         À l'envoi, on passe sa valeur au composant, puis on vide le champ. -->
     <form (ngSubmit)="handleAddTask(newTaskName.value); newTaskName.value=''">
         <input type="text" placeholder="nom de la tâche" #newTaskName>
 

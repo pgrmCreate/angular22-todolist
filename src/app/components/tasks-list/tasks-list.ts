@@ -8,5 +8,7 @@ import { Task } from '../../../interfaces/Task';
     templateUrl: './tasks-list.html',
 })
 export class TasksList {
+    // input.required() : le parent doit obligatoirement fournir [tasks].
+    // tasks est un signal en lecture seule : on le lit avec tasks() dans le template.
     readonly tasks = input.required<Task[]>();
 }

@@ -1,0 +1,42 @@
+/* Liste des tâches : chaque <li> devient une petite carte numérotée.
+   La numérotation vient d'un compteur CSS, sans rien changer au template. */
+
+ul {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: task;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+    counter-increment: task;
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+li::before {
+    content: counter(task, decimal-leading-zero) / '';
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9px;
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+li:hover {
+    border-color: #d5cec2;
+    transform: translateX(2px);
+}
