@@ -4,9 +4,9 @@
 
     <!--(addTask) : on écoute l'output du composant enfant.
          $event contient la valeur émise, ici le nom de la nouvelle tâche. -->
-    <app-task-add (addTask)="addTask($event)" [toto]="'toto'"/>
+    <app-task-add (addTask)="addTask($event)"/>
 
     <!-- [tasks] : on passe la liste à l'input de l'enfant.
          On transmet tasks() (la valeur du signal), pas le signal lui-même. -->
-    <app-tasks-list [tasks]="tasks()"/>
+    <app-tasks-list [tasks]="tasks()" (remove)="removeTask($event)"/>
 </div>

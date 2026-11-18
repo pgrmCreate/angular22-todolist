@@ -1,5 +1,4 @@
-import { Component, Input, output, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, output, signal } from '@angular/core';
 import { form, FormField, required } from '@angular/forms/signals';
 
 @Component({
@@ -9,7 +8,6 @@ import { form, FormField, required } from '@angular/forms/signals';
     templateUrl: './task-add.html',
 })
 export class TaskAdd {
-    @Input() toto: string[] = [];
     protected readonly newTask = signal({
         title: '',
     });

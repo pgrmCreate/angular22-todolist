@@ -13,7 +13,6 @@ import { TaskAdd } from './components/task-add/task-add';
     templateUrl: './app.html',
 })
 export class App {
-    protected toto = ['john', 'doe'];
     // L'état de l'application tient dans un signal : le parent est le seul
     // à posséder la liste, les composants enfants la reçoivent ou la modifient par lui.
     protected readonly tasks = signal<Task[]>([
@@ -43,4 +42,8 @@ export class App {
             },
         ]);
     }
+
+    protected removeTask(id: number) {
+        this.tasks.set(this.tasks().filter(i => i.id !== id));
+    };
 }

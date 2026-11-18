@@ -1,10 +1,15 @@
 <div>
-    <h2 #title>Hello world</h2>
+    <p #title>Hello world</p>
+
+    <p>Nombre de tâches : {{ taskAmount() }}</p>
     <ul>
         <!-- track task.id : Angular reconnaît chaque tâche par son id
              et ne recrée que les lignes qui ont changé. -->
         @for(task of tasks(); track task.id) {
-            <li>{{ task.title }}</li>
+            <li>
+                <p>{{ task.title }}</p>
+                <button (click)="deleteTask(task.id)">supprimer</button>
+            </li>
         }
     </ul>
 
