@@ -1,5 +1,6 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
 import { form, FormField, required } from '@angular/forms/signals';
+import { TaskService } from '../../services/task.service';
 
 @Component({
     imports: [FormField],
@@ -8,21 +9,19 @@ import { form, FormField, required } from '@angular/forms/signals';
     templateUrl: './task-add.html',
 })
 export class TaskAdd {
+    protected taskService = inject(TaskService);
     protected readonly newTask = signal({
         title: '',
     });
-
     protected readonly newTaskForm = form(this.newTask, (path) => {
         required(path.title, { message: 'Veuillez indiquer le nom de la tâche' });
     });
-    // output() : événement envoyé au parent. Le parent l'écoute avec (addTask)="...".
-    addTask = output<string>();
 
     handleAddTask() {
         if(this.newTaskForm().invalid())
             return;
 
-        this.addTask.emit(this.newTaskForm.title().value());
+        this.taskService.addTask(this.newTaskForm.title().value());
         this.newTaskForm.title().value.set('');
 
         return;

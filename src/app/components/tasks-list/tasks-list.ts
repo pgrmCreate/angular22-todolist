@@ -1,14 +1,12 @@
 import {
     afterNextRender,
-    ChangeDetectionStrategy,
     Component,
     computed,
     ElementRef,
-    input,
-    output,
+    inject,
     viewChild,
 } from '@angular/core';
-import { Task } from '../../../interfaces/Task';
+import { TaskService} from '../../services/task.service';
 
 @Component({
     imports: [],
@@ -17,10 +15,8 @@ import { Task } from '../../../interfaces/Task';
     templateUrl: './tasks-list.html',
 })
 export class TasksList {
-    // input.required() : le parent doit obligatoirement fournir [tasks].
-    // tasks est un signal en lecture seule : on le lit avec tasks() dans le template.
-    readonly tasks = input.required<Task[]>();
-    readonly remove = output<number>();
+    protected readonly taskService = inject(TaskService);
+    readonly tasks = this.taskService.tasks;
     readonly taskAmount = computed(() => this.tasks().length);
 
     private readonly title = viewChild.required<ElementRef<HTMLElement>>('title');
@@ -30,6 +26,6 @@ export class TasksList {
     }
 
     deleteTask(id: number) {
-        this.remove.emit(id);
+        this.taskService.removeTask(id);
     }
 }
